@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
       },
       MajorName: {
-        type: Sequelize.STRING(15),
+        type: Sequelize.STRING(30),
         allowNull: false,
       },
       FacID: {

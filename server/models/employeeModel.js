@@ -5,11 +5,11 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
       },
       Name: {
-        type: Sequelize.STRING(15),
+        type: Sequelize.STRING(30),
         allowNull: false,
       },
       Lname: {
-        type: Sequelize.STRING(15),
+        type: Sequelize.STRING(30),
         allowNull: false,
       },
       Sex: {
@@ -39,7 +39,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: false,
       },
       AssignedTask: {
-        type: Sequelize.STRING(15)
+        type: Sequelize.STRING(30)
       },
     }, {
         freezeTableName: true,

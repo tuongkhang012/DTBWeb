@@ -15,6 +15,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 
 const db = {};
 
+db.ROLES = ["student", "lecturer", "admin"]
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
@@ -31,6 +32,7 @@ db.teachingCertificates = require("./teachingCertificateModel.js")(sequelize, Se
 db.works_in = require("./works_inModel.js")(sequelize, Sequelize);
 db.studies_in = require("./studies_inModel.js")(sequelize, Sequelize);
 db.assigned_to = require("./assigned_toModel.js")(sequelize, Sequelize);
+db.users = require("./userModel.js")(sequelize, Sequelize);
 
 // Association
 //STUDENT_CERTIFICATE N-1 STUDENT
@@ -72,7 +74,7 @@ db.faculties.hasMany(db.majors, {
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 })
-db.majors.belongsTo(db.majors, {
+db.majors.belongsTo(db.faculties, {
   foreignKey: 'FacID',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
@@ -107,6 +109,28 @@ db.employees.hasMany(db.teachingCertificates, {
 })
 db.teachingCertificates.belongsTo(db.employees, {
   foreignKey: 'LecID',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+})
+//USER 1 - 1 STUDENT
+db.students.hasOne(db.users, {
+  foreignKey: 'StuID',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+})
+db.users.belongsTo(db.students, {
+  foreignKey: 'StuID',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+})
+//USER 1 - 1 LECTURER
+db.employees.hasOne(db.users, {
+  foreignKey: 'EmpID',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE',
+})
+db.users.belongsTo(db.employees, {
+  foreignKey: 'EmpID',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 })

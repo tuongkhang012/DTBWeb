@@ -5,16 +5,15 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
       },
       Name: {
-        type: Sequelize.STRING(15),
+        type: Sequelize.STRING(30),
         primaryKey: true,
-        allowNull: false,
       },
       Relationship: {
-        type: Sequelize.STRING(15),
+        type: Sequelize.STRING(30),
         allowNull: false,
       },
       Profession: {
-        type: Sequelize.STRING(15),
+        type: Sequelize.STRING(30),
         allowNull: false,
       },
       PhoneNumber: {

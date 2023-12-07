@@ -12,19 +12,10 @@ const Op = db.sequelize.Op;
 class FacultyCtl{
   async createFaculty (req, res) {
     try {
-        const _DeanID = req.params.DeanID;
-        let dean = Employee.findOne({where: {EmployeeID: _DeanID}})
-        if (dean) {
-            await Faculty.create({
-                ...req.body,
-                DeanID: _DeanID
-            })
-            .then (data => {
-                res.status(201).json(data)
-            });
-        } else {
-            res.status(404).send("This Lecturer doesn't exist")
-        }
+        await Faculty.create(req.body)
+        .then (data => {
+            res.status(201).json(data)
+        });
     } catch (err) {
         res.status(500).send(err);
     }
@@ -33,7 +24,7 @@ class FacultyCtl{
   //Get all faculty
   async getAllFaculty(req, res){
     try {
-        await Faculty.findAll({})//find all Faculty object
+        await Faculty.findAll({ include: Employee })//find all Faculty object
         .then (data => {
             res.status(200).send(data)
         })

@@ -1,5 +1,5 @@
 const db = require("../models")
-const AssignedTo = db.assigned_to;
+const TeachingCert = db.teachingCertificates;
 const Op = db.sequelize.Op;
 //500 is error
 //200 is success
@@ -7,11 +7,11 @@ const Op = db.sequelize.Op;
 //404 is not found
 //204 is delete success
 
-//Create new assignedTo relation
-class AssignedToCtl{
-  async createAssignedTo (req, res) {
+//Create new teachingCert
+class TeachingCertCtl{
+  async createTeachingCert (req, res) {
     try {
-        await AssignedTo.create(req.body)
+        await TeachingCert.create(req.body)
         .then (data => {
             res.status(201).json(data)
         });
@@ -20,10 +20,10 @@ class AssignedToCtl{
     }
   }
 
-  //Get all assignedTo
-  async getAllAssignedTo(req, res){
+  //Get all teachingCert
+  async getAllTeachingCert(req, res){
     try {
-        await AssignedTo.findAll({})//find all AssignedTo object
+        await TeachingCert.findAll({})//find all TeachingCert object
         .then (data => {
             res.status(200).send(data)
         })
@@ -32,15 +32,13 @@ class AssignedToCtl{
     }
   }
 
-  //Get assignedTo by id
-  async getAssignedToByID(req, res){
+  //Get teachingCert by id
+  async getTeachingCertByID(req, res){
     try {
-        await AssignedTo.findOne({
+        await TeachingCert.findOne({
             where: {
-                StuID: req.params.StuID,
                 LecID: req.params.LecID,
-                SubjID: req.params.SubjID,
-                Semester: req.params.Seme
+                Name: req.params.Name
             }
         })
         .then (data => {
@@ -57,22 +55,20 @@ class AssignedToCtl{
     }
   }
 
-  // Update existing assignedTo
-  async updateAssignedTo(req, res){
+  // Update existing teachingCert
+  async updateTeachingCert(req, res){
     try {
-        await AssignedTo.update(req.body, {
+        await TeachingCert.update(req.body, {
             where: {
-                StuID: req.params.StuID,
                 LecID: req.params.LecID,
-                SubjID: req.params.SubjID,
-                Semester: req.params.Seme
+                Name: req.params.Name
             }
         })
         .then (num => {
             if(num == 1){
                 res.status(200).send("Success!")
             } else {
-                res.status(404).send("AssignedTo not Found")
+                res.status(404).send("TeachingCert not Found")
             }
         })
     } catch (err) {
@@ -81,21 +77,19 @@ class AssignedToCtl{
   }
 
   // Delete a room
-  async deleteAssignedTo(req, res){
+  async deleteTeachingCert(req, res){
     try {
-        await AssignedTo.destroy({
+        await TeachingCert.destroy({
             where: {
-                StuID: req.params.StuID,
                 LecID: req.params.LecID,
-                SubjID: req.params.SubjID,
-                Semester: req.params.Seme
+                Name: req.params.Name
             }
         })
         .then (num => {
             if(num == 1){
                 res.status(200).send("Success!")
             } else {
-                res.status(404).send("AssignedTo not Found")
+                res.status(404).send("TeachingCert not Found")
             }
         })
     } catch (err) {
@@ -104,4 +98,4 @@ class AssignedToCtl{
   }
 }
 
-module.exports = new AssignedToCtl;
+module.exports = new TeachingCertCtl;
