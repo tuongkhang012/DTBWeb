@@ -1,7 +1,5 @@
 const db = require("../models")
 const Student = db.students;
-const SPN = db.studentPhoneNumbers;
-const StudentCert = db.studentCertificates;
 const Op = db.sequelize.Op;
 //500 is error
 //200 is success
@@ -13,6 +11,7 @@ const Op = db.sequelize.Op;
 class StudentCtl{
   async createStudent (req, res) {
     try {
+        console.log(req.body)
         await Student.create(req.body)
         .then (data => {
             res.status(201).json(data)

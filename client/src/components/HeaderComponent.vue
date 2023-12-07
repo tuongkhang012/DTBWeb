@@ -47,11 +47,29 @@
           <li class="nav-item">
             <router-link class="nav-link" to="/profile">Profile</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/student">Student</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/employee">Employee</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/subject">Subject</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/faculty">Faculty</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/major">Major</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/assign">Assign Lesson</router-link>
+          </li>
         </ul>
       </div>
       <!-- unlogged in -->
       <div v-else class="collapse navbar-collapse" id="navbarNavDropdown">
-        <router-link class="navbar-brand" to="/">
+        <router-link class="navbar-brand" to="/home">
           Δ
         </router-link>
       </div>
@@ -59,7 +77,7 @@
       <div v-if="currentUser" class="ms-auto">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a @click.prevent="logOut" class="nav-link" to="/">Logout</a>
+            <a @click.prevent="logOut" class="nav-link" to="/home">Logout</a>
           </li>
         </ul>
       </div>

@@ -32,7 +32,6 @@ exports.signup = async (req, res) => {
                     TotalCredit: 0,
                 })
             }
-            console.log("hello")
             await User.create({
                 Username: req.body.Username,
                 Password: bcrypt.hashSync(req.body.Password, 8),

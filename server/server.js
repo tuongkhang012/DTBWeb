@@ -30,7 +30,7 @@ app.use('/api', require('./routes/SPNRoute.js'))
 app.use('/api', require('./routes/dependentRoute.js'))
 require('./routes/auth.routes.js')(app);
 
-db.sequelize.sync({alter: true});
+db.sequelize.sync();
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true,
       },
       APhoneNumber: {
-        type: Sequelize.STRING(9),
+        type: Sequelize.STRING(10),
         primaryKey: true,
       },
     }, {
