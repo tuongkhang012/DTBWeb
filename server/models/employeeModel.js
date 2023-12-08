@@ -43,7 +43,8 @@ module.exports = (sequelize, Sequelize) => {
       },
     }, {
         freezeTableName: true,
-        tableName: "EMPLOYEE"
+        tableName: "EMPLOYEE",
+        hasTrigger: true
     });
   
     return employee;

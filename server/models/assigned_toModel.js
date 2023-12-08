@@ -36,7 +36,8 @@ module.exports = (sequelize, Sequelize) => {
         },
       }, {
           freezeTableName: true,
-          tableName: "ASSIGNED_TO"
+          tableName: "ASSIGNED_TO",
+          hasTrigger: true
     });
 
     return assigned_to;

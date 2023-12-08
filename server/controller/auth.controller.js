@@ -51,7 +51,7 @@ exports.signup = async (req, res) => {
                     Address: req.body.Address,
                     Email: req.body.Email,
                     YearsOfService: 0,
-                    Salary: 20000,
+                    Salary: 10000000,
                     LecturerType: 1,
                     WorkerType: 0,
                 })

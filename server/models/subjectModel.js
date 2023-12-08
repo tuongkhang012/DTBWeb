@@ -13,7 +13,8 @@ module.exports = (sequelize, Sequelize) => {
       },
     }, {
         freezeTableName: true,
-        tableName: "SUBJECT"
+        tableName: "SUBJECT",
+        hasTrigger: true
     });
   
     return subject;
